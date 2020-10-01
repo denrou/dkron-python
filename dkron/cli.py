@@ -11,8 +11,9 @@ api = None
 
 
 @click.group(context_settings=_CONTEXT_SETTINGS)
-@click.option('--hosts', help='Dkron instance URLs, separated with commans', envvar=_DKRON_ENV_NAME_HOSTS)
-def cli(hosts):
+@click.option('--hosts', help='Dkron instance URLs, separated with commas', envvar=_DKRON_ENV_NAME_HOSTS)
+@click.option('--secure/--insecure', ' /-k', help='Do not verify the servers TLS certificate.', is_flag=True, default=True)
+def cli(hosts, secure):
     '''
     Command line interface client for Dkron
     '''
@@ -21,7 +22,7 @@ def cli(hosts):
         print('You must provide %s environment variable OR --hosts option' % _DKRON_ENV_NAME_HOSTS)
         print('Check docs: https://github.com/Eyjafjallajokull/dkron-python#cli-usage')
         exit(1)
-    api = Dkron(hosts.split(','))
+    api = Dkron(hosts.split(','), verify=secure)
 
 
 @cli.group()
