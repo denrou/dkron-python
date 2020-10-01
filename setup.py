@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from codecs import open
 from os import path
-from pypandoc import convert
+from pypandoc import convert_file
 
 __version__ = '0.0.5'
 
@@ -9,7 +9,7 @@ here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
 try:
-    long_description = convert('README.md', 'rst')
+    long_description = convert_file('README.md', 'rst')
 except(IOError, ImportError):
     with open(path.join(here, 'README.md'), encoding='utf-8') as f:
         long_description = f.read()
