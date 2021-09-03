@@ -1,7 +1,7 @@
 from .cli import cli
 
 
-_CLI_NAME = 'dkron-cli'
+_CLI_NAME = "dkron-cli"
 
 
 def main(args=None):
