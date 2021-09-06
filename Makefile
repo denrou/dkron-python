@@ -28,7 +28,6 @@ help:
 
 clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
 
-
 clean-build: ## remove build artifacts
 	rm -fr build/
 	rm -fr dist/
@@ -48,21 +47,19 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 
 test: ## run tests quickly with the default Python
-	nosetests --with-coverage --cover-package=dkron --nocapture -vv
+	poetry run nosetests --with-coverage --cover-package=dkron_python --nocapture -vv
 
 coverage: ## check code coverage quickly with the default Python
-	coverage report -m
-	coverage html
+	poetry run coverage report -m
+	poetry run coverage html
 	$(BROWSER) htmlcov/index.html
 
 release: clean ## package and upload a release
-	python setup.py sdist upload
-	python setup.py bdist_wheel upload
+	poetry --build publish
 
 dist: clean ## builds source and wheel package
-	python setup.py sdist
-	python setup.py bdist_wheel
+	poetry build
 	ls -l dist
 
 install: clean ## install the package to the active Python's site-packages
-	python setup.py install
+	poetry install

@@ -1,4 +1,0 @@
-nose
-coverage
-requests_mock
-pypandoc
