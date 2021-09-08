@@ -4,15 +4,14 @@ import os
 from .api import Dkron, DkronException
 
 _CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
-_DKRON_ENV_NAME_HOSTS = "DKRON_HOSTS"
 api = None
 
 
 @click.group(context_settings=_CONTEXT_SETTINGS)
 @click.option(
+    "-h",
     "--hosts",
     help="Dkron instance URLs, separated with commas",
-    envvar=_DKRON_ENV_NAME_HOSTS,
 )
 @click.option(
     "-k",
@@ -25,14 +24,12 @@ def cli(hosts, insecure):
     Command line interface client for Dkron
     """
     global api
-    if not hosts:
-        print(
-            "You must provide %s environment variable OR --hosts option"
-            % _DKRON_ENV_NAME_HOSTS
-        )
-        print("Check docs: https://github.com/Eyjafjallajokull/dkron-python#cli-usage")
+    try:
+        api = Dkron(hosts, not insecure)
+    except DkronException as e:
+        print(f"You must provide 'DKRON_HOSTS' environment variable OR --hosts option")
+        print("Check docs: https://github.com/centreon/dkron-python#cli-usage")
         exit(1)
-    api = Dkron(hosts.split(","), verify=not insecure)
 
 
 @cli.group()
