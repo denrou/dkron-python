@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dkron-python"
-version = "0.7.0"
+version = "0.7.1"
 description = ""
 authors = ["Pawel Olejniczak <pawel.olejniczak@gmail.com>", "Denis Roussel <droussel@centreon.com>"]
 license = "MIT"
