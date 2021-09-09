@@ -29,7 +29,7 @@ class Dkron:
             except requests.exceptions.ConnectionError as ex:
                 self.base_url = None
         if not self.base_url:
-            raise DkronException("No healthy host")
+            raise DkronException(f"Unhealthy hosts {hosts}.")
 
     def _get_url(self, path):
         return self.base_url + path
