@@ -1,6 +1,5 @@
 import requests
 import urllib3
-import os
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -10,15 +9,10 @@ class DkronException(Exception):
 
 
 class Dkron:
-    def __init__(self, hosts=None, verify=True):
+    def __init__(self, hosts, verify=True):
         self.raise_errors = True
         self.base_url = None
         self.verify = verify
-        if not hosts:
-            if "DKRON_HOSTS" in os.environ:
-                hosts = os.environ["DKRON_HOSTS"].split(",")
-            else:
-                raise DkronException("No hosts specified")
         for host in hosts:
             try:
                 self.base_url = host
