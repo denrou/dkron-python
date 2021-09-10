@@ -10,6 +10,7 @@ api = None
 
 @click.group(context_settings=_CONTEXT_SETTINGS)
 @click.option(
+    "-h",
     "--hosts",
     help="Dkron instance URLs, separated with commas",
     envvar=_DKRON_ENV_NAME_HOSTS,
