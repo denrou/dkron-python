@@ -31,4 +31,4 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-dkron-cli = "dkron.__main__:main"
+dkron-cli = "dkron_python.__main__:main"
