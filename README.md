@@ -1,8 +1,8 @@
 # dkron-python
 
-[![Build Status](https://travis-ci.org/Eyjafjallajokull/dkron-python.svg?branch=master)](https://travis-ci.org/Eyjafjallajokull/dkron-python)
-
 Command line interface client and python library for [Dkron](http://dkron.io/).
+This is a fork from [Pawel Olejniczak](https://github.com/Eyjafjallajokull/dkron-python.git) implementation and which is not actively maintained anymore.
+Big thank to him.
 
 ## Prerequisites
 
@@ -13,13 +13,19 @@ Command line interface client and python library for [Dkron](http://dkron.io/).
 To install use pip:
 
 ```console
-pip install dkron
+pip install git+https://github.com/centreon/dkron-python.git
+```
+
+Or better, use pipx:
+
+```console
+pipx install git+https://github.com/centreon/dkron-python.git
 ```
 
 Or clone the repo:
 
 ```console
-git clone https://github.com/Eyjafjallajokull/dkron-python.git
+git clone https://github.com/centreon/dkron-python.git
 python setup.py install
 ```
 
