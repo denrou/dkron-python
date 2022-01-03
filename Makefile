@@ -49,9 +49,9 @@ clean-test: ## remove test and coverage artifacts
 test: ## run tests quickly with the default Python
 	poetry run nosetests --with-coverage --cover-package=dkron_python --nocapture -vv
 
-coverage: ## check code coverage quickly with the default Python
-	poetry run coverage report -m
-	poetry run coverage html
+coverage: test ## check code coverage quickly with the default Python
+	poetry run coverage report -mi
+	poetry run coverage html -i
 	$(BROWSER) htmlcov/index.html
 
 release: clean ## package and upload a release

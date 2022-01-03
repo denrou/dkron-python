@@ -103,6 +103,6 @@ class DkronTestCase(TestCase):
     def test_get_executions(self):
         expected = {"foo": "bar"}
         with rmock.Mocker() as mocker:
-            self._get_simple_mock(mocker, "/v1/executions/foo", expected)
+            self._get_simple_mock(mocker, "/v1/jobs/foo/executions", expected)
             results = self.api.get_executions("foo")
             self.assertEquals(results, expected)
