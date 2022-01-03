@@ -34,8 +34,8 @@ class Dkron:
     def _process_response(self, response):
         if self.raise_errors and response.status_code not in [200, 201, 202]:
             raise DkronException(
-                "Dkron API request failed with code %d, %s"
-                % (response.status_code, response.text)
+                "Dkron API request failed to request %s with code %d, %s"
+                % (response.url, response.status_code, response.text)
             )
         return response.json()
 
@@ -84,6 +84,6 @@ class Dkron:
         return self._process_response(response)
 
     def get_executions(self, job_name):
-        url = self._get_url("/v1/executions/%s" % job_name)
+        url = self._get_url("/v1/jobs/%s/executions" % job_name)
         response = requests.get(url, headers=self._get_headers(), verify=self.verify)
         return self._process_response(response)
