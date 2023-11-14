@@ -35,13 +35,13 @@ class DkronTestCase(TestCase):
         hosts = ["http://localhost:8080"]
         with rmock.Mocker() as mocker:
             mocker.register_uri(rmock.GET, hosts[0] + "/v1", status_code=500, text="[]")
-            with self.assertRaises(DkronException) as context:
+            with self.assertRaises(DkronException):
                 Dkron(hosts)
 
     def test_status_exception(self):
         with rmock.Mocker() as mocker:
             mocker.register_uri(rmock.GET, self.get_url("/v1"), status_code=404)
-            with self.assertRaises(DkronException) as context:
+            with self.assertRaises(DkronException):
                 self.api.get_status()
 
     def test_get_status(self):

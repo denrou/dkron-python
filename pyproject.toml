@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dkron-python"
-version = "0.7.6"
+version = "0.7.7"
 description = ""
 authors = ["Pawel Olejniczak <pawel.olejniczak@gmail.com>", "Denis Roussel <droussel@centreon.com>"]
 license = "MIT"
@@ -16,11 +16,10 @@ classifiers = [
     ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-click = "^8.0.1"
-requests = "^2.26.0"
-urllib3 = "^1.26.6"
-typer = {extras = ["all"], version = "^0.6.1"}
+python = ">=3.8,<4"
+requests = ">=2.26.0"
+urllib3 = ">=1.26.6"
+typer = {extras = ["all"], version = ">=0.6.1"}
 
 [tool.poetry.dev-dependencies]
 requests-mock = "^1.9.3"
