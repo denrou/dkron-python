@@ -16,6 +16,7 @@ class Dkron:
         for host in hosts:
             try:
                 self.base_url = host
+                self.verify = verify
                 self.get_status()
                 break
             except DkronException as ex:
